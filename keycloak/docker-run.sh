@@ -1,0 +1,1 @@
+docker run --name dms-keycloak --rm -d -p 9099:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KEYCLOAK_CONFIG_FILE=keycloak-postgres.conf -e KEYCLOAK_MODE=DEV dms-keycloak:latest

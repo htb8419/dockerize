@@ -1,0 +1,33 @@
+# Use postgres/example user/password credentials
+version: '3.9'
+services:
+  db:
+    image: postgres:16.3
+    restart: always
+    ports:
+      - "55432:5432"
+    # set shared memory limit when using docker-compose
+    shm_size: 256mb
+    # or set shared memory limit when deploy via swarm stack
+    volumes:
+     - type: bind
+       source: /ht/tmp/postgres/data
+       target: /var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8888:8080"
+volumes:
+  db_data:
+    driver: local # Define the driver and options under the volume name
+    driver_opts:
+      type: none
+      device: /ht/tmp/postgres/data
+      o: bind

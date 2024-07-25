@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  prometheus:
+    image: bitnami/prometheus:latest
+    ports:
+      - 9006:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      monitoring:
+        aliases:
+          - prometheus
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 5500:3000
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      monitoring:
+        aliases:
+          - grafana
+networks:
+  monitoring:
