@@ -1,0 +1,16 @@
+version: "3"
+services:
+  krakend:
+    image: devopsfaith/krakend:2.7
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    # set shared memory limit when using docker-compose
+    shm_size: 256mb
+    # or set shared memory limit when deploy via swarm stack
+    volumes:
+      - type: bind
+        source: ${PWD}/config/krakend.json
+        target: /etc/krakend/krakend.json
+    command: ["run", "-d", "-c", "/etc/krakend/krakend.json"]

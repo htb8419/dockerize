@@ -1,0 +1,8 @@
+kafka:
+  clusters:
+    -
+      name: kafka-dev-9096
+      bootstrapServers: 192.168.25.53:9096
+      metrics:
+        port: 9997
+        type: JMX

@@ -1,0 +1,4 @@
+docker build -t openjdk-17.certs.build-no ./
+docker run --rm -it <imageName> /bin/bash
+
+keytool -list -cacerts -storepass changeit -alias <domain>
