@@ -1,5 +1,4 @@
 # Use postgres/example user/password credentials
-version: '3.9'
 services:
   infinispan:
     image: infinispan:15.0.5
@@ -12,7 +11,7 @@ services:
     # or set shared memory limit when deploy via swarm stack
     volumes:
      - type: bind
-       source: /ht/tmp/infinispan/data
+       source: ~/tmp/infinispan/data
        target: /var/lib/infinispan/data
     environment:
       USER: admin
@@ -22,5 +21,5 @@ volumes:
     driver: local # Define the driver and options under the volume name
     driver_opts:
       type: none
-      device: /ht/tmp/infinispan/data
+      device: ~/tmp/infinispan/data
       o: bind
