@@ -1,0 +1,10 @@
+{
+  "hosts": ["unix:///var/run/docker.sock", "tcp://0.0.0.0:2375"],
+  "proxies": {
+    "default": {
+      "httpProxy": "http://192.168.11.1:10809",
+      "httpsProxy": "http://192.168.11.1:10809",
+      "noProxy": "localhost,127.0.0.1,.yourdomain.com"
+    }
+  }
+}
