@@ -1,0 +1,12 @@
+scrape_configs:
+  - job_name: 'latency-troubleshooter'
+    scrape_interval: 10s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets:
+        - '192.162.1.136:8080'
+        - '10.0.91.14:7001'
+        - '10.0.91.14:10001'
+        labels:
+          group: backend
+          app_name: fixa-admin

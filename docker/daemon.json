@@ -1,0 +1,12 @@
+{
+  "data-root": "/home/hadi/.var/docker",
+  "hosts": ["unix:///var/run/docker.sock", "tcp://0.0.0.0:2375"],
+  "userland-proxy": false,
+  "insecure-registries" : ["https://docker.arvancloud.ir"],
+  "registry-mirrors": ["https://docker.arvancloud.ir"],
+  "proxies": {
+    "http-proxy": "http://127.0.0.1:10809",
+    "https-proxy": "https://127.0.0.1:10809",
+    "no-proxy": "*.test.example.com,.example.org,127.0.0.0/8"
+  }
+}

@@ -1,10 +1,8 @@
-version: '3.7'
-
 services:
   prometheus:
     image: bitnami/prometheus:latest
     ports:
-      - 9006:9090
+      - "9006:9090"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
@@ -14,7 +12,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     ports:
-      - 5500:3000
+      - "5500:3000"
     volumes:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     environment:
@@ -24,5 +22,14 @@ services:
       monitoring:
         aliases:
           - grafana
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    networks:
+      monitoring:
+        aliases:
+          - loki
 networks:
   monitoring:
+    driver: bridge

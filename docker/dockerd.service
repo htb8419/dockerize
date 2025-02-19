@@ -13,7 +13,6 @@ LimitNPROC=512
 TimeoutStartSec=0
 Restart=always
 RestartSec=2
-Environment=DOCKER_OPTS="--host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375"
 
 [Install]
 WantedBy=multi-user.target
